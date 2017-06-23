@@ -11,7 +11,12 @@ int main() {
 
     std::cout<<"Inserisci un anno:"<<std::endl;
     std::cin>>year_;
-    d.setyear(year_);
+    try{
+        d.setyear(year_);
+    }catch (std::out_of_range &ex){
+        std::cout<<"Eccezione : "<<ex.what();
+        std::abort();
+    }
 
     std::cout<<"Inserisci un mese:"<<std::endl;
     std::cin>>month_;

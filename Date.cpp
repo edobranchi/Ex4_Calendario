@@ -49,8 +49,11 @@ int Date::getyear() {
 }
 
 void Date::setyear(int year) {
-if((year%4==0 && year%100!=0)|| year%400==0){
-    bis= true;
-}
-    this->year=year;
+    bool oldyear=bis;
+    if((year%4==0 && year%100!=0)|| year%400==0){
+        bis= true;
+        if (oldyear==true && getday()==29 && getmonth()==2 && bis==false){
+            throw std::out_of_range("Impossibile impostare anno non bisestile");
+        }
+}this->year=year;
 }
